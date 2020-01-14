@@ -17,5 +17,7 @@ export const RequestLogTestList = () =>{
  * 添加日志
  */
 export const RequestAddLog = ()=>{
-    
+    return axiosApi({
+        
+    })
 }
