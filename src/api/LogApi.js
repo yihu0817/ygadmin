@@ -5,7 +5,7 @@ import axiosApi from './base.js';
  * @param {}} username 
  * @param {*} password 
  */
-export const RequestLogList = () =>{
+export const RequestLogTestList = () =>{
     return axiosApi({
         url:'/api/log',
         method: 'get',
