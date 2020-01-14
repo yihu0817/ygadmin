@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { RequestLogin } from "../api/UserApi";
 export default {
   data() {
     return {
