@@ -7,7 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Sha256 from 'js-sha256';
 
 Vue.use(ElementUI);
-Vue.use(Sha256);
+Vue.prototype.$Sha256 = Sha256;
 new Vue({
     el: '#app',
     router,
