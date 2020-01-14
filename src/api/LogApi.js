@@ -16,9 +16,11 @@ export const RequestLogTestList = () =>{
 /**
  * 日志添加
  */
+
 export const RequestAddLog = () => {
     return axiosApi({
         url:'/api/logadd',
-        post:'get'
+        method: 'post'
+
     })
 }
