@@ -18,6 +18,7 @@ export const RequestLogTestList = () =>{
  */
 export const RequestAddLog = () => {
     return axiosApi({
-        url:'/api/logadd'
+        url:'/api/logadd',
+        post:'get'
     })
 }
