@@ -74,7 +74,6 @@ export default {
 }
 .el-main {
   margin-top: 12%;
-
   /* border: 1px solid red; */
 }
 .el-card {
