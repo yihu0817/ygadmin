@@ -1,7 +1,7 @@
 <template>
   <div>
       <h2>登录界面</h2>
-      <el-form model="loginForm">
+      <el-form :model="loginForm">
         <el-form-item label="用户名">
           <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
