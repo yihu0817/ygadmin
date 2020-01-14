@@ -8,7 +8,7 @@ import axiosApi from './base.js';
 export const RequestLogTestList = () =>{
     return axiosApi({
         url:'/api/log',
-        method: 'get',
+        method: 'post',
      
     })
 }
