@@ -21,5 +21,6 @@ export const RequestAddLog = () => {
     return axiosApi({
         url:'/api/logadd',
         method: 'post'
+
     })
 }
