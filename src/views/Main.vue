@@ -6,7 +6,14 @@
           <p>雨果后台管理中心</p>
         </el-col>
         <el-col :span="12" class="mainContent">
-          <el-image :src="require('../images/img.jpg')" class="headerImg"></el-image>
+          <el-image
+            :src="loginUser.headerimg!=''?(baseUrl+loginUser.headerimg):''"
+            class="headerImg"
+          >
+            <div slot="error" class="image-solt">
+              <el-image :src="require('../images/headerimg.jpg')" />
+            </div>
+          </el-image>
           <span>{{loginUser.username}}</span>
         </el-col>
       </el-row>
@@ -16,7 +23,13 @@
         <p class="content-p">菜单列表</p>
         <Menu></Menu>
       </el-aside>
-      <el-main></el-main>
+      <el-main>
+        <el-breadcrumb separator-class="el-icon-arrow-right" style="margin-bottom:8px">
+          <el-breadcrumb-item :to="{path:'/about'}">首页</el-breadcrumb-item>
+          <el-breadcrumb-item v-text="this.$router.currentRoute.meta.title">首页</el-breadcrumb-item>
+        </el-breadcrumb>
+        <router-view />
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -28,18 +41,19 @@ export default {
     return {
       loginUser: {
         username: null,
-        haederimg: null
+        headerimg: null
       },
-      base_user: BASEURL
+      baseUrl: BASEURL
     };
   },
+
   components: {
     Menu
   },
   created() {
     let userObj = this.$store.getters.getUser;
     this.loginUser.username = userObj.username;
-    this.loginUser.haederimg = userObj.headerimg;
+    this.loginUser.headerimg = userObj.headerimg;
     console.log(this.$store.getters.getUser);
   }
 };
@@ -73,11 +87,9 @@ export default {
   height: 92vh;
 }
 .content .el-aside {
-  background: gold;
+  background: #545c64;
 }
-.content .el-main {
-  background: rgb(138, 155, 228);
-}
+
 p {
   line-height: 8vh;
 }

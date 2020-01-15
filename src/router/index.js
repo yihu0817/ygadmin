@@ -17,9 +17,7 @@ const routes = [
         mate: { requireAuth: false },
         component: () => import("@/views/Login"),
         hidden: false
-
     },
-
     {
         name: "main",
         path: "/main",
@@ -36,6 +34,10 @@ const routes = [
             }
         ]
     },
+    {
+        path: "*",
+        component: () => import("@/views/Err")
+    }
 
 ]
 

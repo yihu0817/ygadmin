@@ -40,4 +40,7 @@ export default {
 </script>
 
 <style>
+.el-submenu {
+  width: 200px;
+}
 </style>

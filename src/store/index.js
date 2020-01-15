@@ -35,6 +35,7 @@ const actions = {
             if (res.code == 200) {
                 //data.sysmenu服务器返回权限动态菜单数组
                 let fmtRoutes = formatRoutes(res.sysmenu);
+                console.log(`${JSON.stringify(fmtRoutes)}`)
                 //格式化的动态菜单添加到本地路由
                 router.addRoutes(fmtRoutes);
                 commit("INIT_MENU", fmtRoutes)
@@ -62,7 +63,6 @@ const getters = {
         }
     }
 }
-
 const VuexStore = new Vuex.Store({
     state,
     mutations,
