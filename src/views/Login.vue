@@ -21,7 +21,8 @@
                 v-model="loginForm.username"
                 placeholder="请输入用户名"
                 clearable
-                @blur="Bl_InitUserName"
+                @blur="onBlurUserName"
+                @focus="onFocusUsername"
               ></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="password">
@@ -30,13 +31,14 @@
                 v-model="loginForm.password"
                 placeholder="请输入密码"
                 show-password
-                @blur="Bl_InitPassword"
+                @blur="onBlurPassword"
+                @focus="onFocusPassword"
               ></el-input>
             </el-form-item>
             <el-form-item>
               <el-row type="flex" justify="space-between">
-                <el-button type="primary" @click="on_Login" :disabled="isdis">登录</el-button>
-                <el-button type="warning" @click="on_cancelLogin">取消</el-button>
+                <el-button type="primary" @click="onLogin" :disabled="isdis">登录</el-button>
+                <el-button type="warning" @click="onCancelLogin">取消</el-button>
               </el-row>
             </el-form-item>
           </el-form>
@@ -75,11 +77,27 @@ export default {
       isdis: true
     };
   },
+  updated() {
+    this.onFocusUsername() && this.onFocusPassword()
+      ? (this.isdis = false)
+      : (this.isdis = true);
+  },
   methods: {
+    /**
+     * 获取焦点，登录按钮可用
+     */
+    onFocusUsername() {
+      // console.log(`获取用户名焦点`);
+      return true;
+    },
+    onFocusPassword() {
+      // console.log(`获取密码焦点`);
+      return true;
+    },
     /**
      * 登录初始化验证,失去焦点
      */
-    Bl_InitUserName() {
+    onBlurUserName() {
       let username = this.loginForm.username;
       if (username != null && username != "") {
         this.loginRule.username[0].required = false;
@@ -88,18 +106,17 @@ export default {
         showMassage("请输入用户名！");
       }
     },
-    Bl_InitPassword() {
+    onBlurPassword() {
       let password = this.loginForm.password;
       let passwordLen = 0;
       if (password != null && password != "") {
         this.loginRule.password[0].required = false;
         passwordLen = password.length;
-        this.isdis = false;
       } else {
         this.loginRule.password[0].required = true;
-        showMassage("请输入密码！");
+        // showMassage("请输入密码！");
       }
-      console.log(`密码长度：${passwordLen}`);
+      // console.log(`密码长度：${passwordLen}`);
       if (passwordLen >= 3 && passwordLen <= 5) {
         this.loginRule.password[0].required = false;
       } else {
@@ -116,7 +133,8 @@ export default {
         .then(res => {
           if (res.data.resultCode == 1) {
             // this.$store.dispatch("saveUser", res.data.resultInfo);
-            this.$store.dispatch("saveUser", user); //保存登录信息
+            this.$store.dispatch("saveUser", res.data.resultInfo); //保存登录信息
+            console.log(res.data.resultInfo);
             this.$router.replace({ path: "/main" });
             showMassage("登录成功！", "success");
           } else {
@@ -131,15 +149,14 @@ export default {
     /**
      * 登录
      */
-    on_Login() {
+    onLogin() {
       const user = this.loginForm;
-
       this.LoginJudge(user);
     },
     /**
      * 取消登录
      */
-    on_cancelLogin() {
+    onCancelLogin() {
       this.loginForm.username = null;
       this.loginForm.password = null;
     }
