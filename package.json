@@ -28,8 +28,8 @@
     "vue-router": "^3.0.7",
     "vuex": "^3.1.2",
     "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "webpack-cli": "^3.3.2"
+
   },
   "devDependencies": {
     "vue-loader": "^15.8.3",

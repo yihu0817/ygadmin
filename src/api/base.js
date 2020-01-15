@@ -3,7 +3,7 @@ import axios from 'axios';
 export const BASEURL = 'http://www.warmtel.com:8088';   //生产环境
 // export const BASEURL = 'http://192.168.0.100:8088';  //测试环境
 const axiosApi = axios.create({
-  baseURL: BASEURL,   
+  baseURL: BASEURL,
   timeout: 5000 //超时间
 })
 

@@ -6,21 +6,21 @@ import Sha256 from "js-sha256";
  * @param {}} username 
  * @param {*} password 
  */
-export const RequestLogin = (username,psw) =>{
+export const RequestLogin = (username, psw) => {
     let password = Sha256(psw.trim()); //trim()去空格
     return axiosApi({
-        url:'/api/login',
+        url: '/api/login',
         method: 'POST',
-        data: {username,password}
+        data: { username, password }
     })
 }
 
 /**
  * 用户退出
  */
-export const RequestLogout = () =>{
+export const RequestLogout = () => {
     return axiosApi({
-        url:'/api/logout',
+        url: '/api/logout',
         method: 'get'
     });
 }
@@ -39,7 +39,7 @@ export const RequestUserList = () => {
  */
 export const RequestUserListPage = (currentNo) => {
     return axiosApi({
-        url: '/api/list_page?pageNo='+currentNo,
+        url: '/api/list_page?pageNo=' + currentNo,
         method: 'get'
     })
 }
@@ -47,7 +47,7 @@ export const RequestUserListPage = (currentNo) => {
 /**
  * 文件上传
  */
-export const RequestUploadHeader = (formdata)=>{
+export const RequestUploadHeader = (formdata) => {
     return axiosApi({
         url: '/api/uploadFile',
         method: 'post',
@@ -59,7 +59,7 @@ export const RequestUploadHeader = (formdata)=>{
  * 添加用户，包括头像
  * @param {*} formdata 
  */
-export const RequestUserAdd = (formdata)=>{
+export const RequestUserAdd = (formdata) => {
     return axiosApi({
         url: '/api/add',
         method: 'post',
@@ -85,7 +85,7 @@ export const RequestRegister = (formdata) => {
  */
 export const RequestDeleteUser = (uid) => {
     return axiosApi({
-        url: '/api/delete?uid='+uid,
+        url: '/api/delete?uid=' + uid,
         method: 'get',
     })
 }
@@ -93,6 +93,6 @@ export const RequestDeleteUser = (uid) => {
 /**
  * 动态菜单
  */
-export const RequestSysMenu = () =>{
+export const RequestSysMenu = () => {
     return axiosApi.get('/api/sysmenu').then(res => res.data);
 }

@@ -42,7 +42,7 @@
           </el-form>
         </el-card>
       </el-main>
-    </el-container>
+    </el-container>>>>>>>> 1feec77d7174704a2b2cebe8e846ac07daa5378d
   </div>
 </template>
 
@@ -133,6 +133,7 @@ export default {
      */
     on_Login() {
       const user = this.loginForm;
+
       this.LoginJudge(user);
     },
     /**
