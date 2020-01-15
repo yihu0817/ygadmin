@@ -40,7 +40,6 @@ const actions = {
 
 const getters = {
     getUser: state => state.user,
-
     menu: state => {
         if (state.menuRoutes.length > 0) {
             return state.menuRoutes;

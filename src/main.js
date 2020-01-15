@@ -14,10 +14,10 @@ router.beforeEach((to, from, next) => {
     store.dispatch("initMenu");
     const isok = to.matched.some(record => record.meta.requireAuth)
     if (isok) {
-        if (store.getters.user) {
+        if (store.getters.getUser) {
             next();
         } else {
-            next("/login");
+            next({path:"/"});
         }
     } else {
         next()

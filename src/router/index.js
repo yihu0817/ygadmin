@@ -7,11 +7,14 @@ const routes = [
     {
         path: '/',
         redirect: 'login', //重定向
-        hidden: false
+        hidden: false,
+        mate: { requireAuth: false },
+
     },
     {
         name: "login",
         path: "/login",
+        mate: { requireAuth: false },
         component: () => import("@/views/Login"),
         hidden: false
 
@@ -21,6 +24,8 @@ const routes = [
         name: "main",
         path: "/main",
         redirect: "about",
+        meta: { requireAuth: true },
+        hidden: true,
         component: () => import("@/views/Main"),
         children: [
             {
