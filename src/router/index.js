@@ -5,23 +5,37 @@ Vue.use(Router);
 
 const routes = [
     {
-        path:'/',
-        redirect:'login'
+        path: '/',
+        redirect: 'login', //重定向
+        hidden: false
     },
     {
-        path:'/login',
-        name:'login',
-        component: ()=>import('@/views/Login')
+        name: "login",
+        path: "/login",
+        component: () => import("@/views/login"),
+        hidden: false
+
     },
+
     {
-        path:'/main',
-        name:'main',
-        component:() =>import('@/views/Main')
-    }
+        name: "main",
+        path: "/main",
+        redirect: "about",
+        component: () => import("@/views/Main"),
+        children: [
+            {
+                name: "about",
+                path: "/about",
+                hidden: false,
+                component: () => import("@/views/about.vue")
+            }
+        ]
+    },
+
 ]
 
 const router = new Router({
-    mode: 'history', 
+    mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
