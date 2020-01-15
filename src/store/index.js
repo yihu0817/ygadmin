@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 import Vue from 'vue'
 import { RequestSysMenu } from '@/api/UserApi'
 import router from '@/router/index'
-
+import { sava_LoginUser, get_LoginUser, clear_LoginUser } from '../cookie/saveLoginUser'
 Vue.use(Vuex);
 
 const state = {
@@ -14,11 +14,16 @@ const state = {
 const mutations = {
     SAVE_USER(state, user) {
         state.user = user;
+        sava_LoginUser(user);
     },
     INIT_MENU(state, menu) {
         state.menuRoutes = menu
         localStorage.setItem("menu", JSON.stringify(state.menuRoutes));
     },
+    CLEAR_LOGINUSER(state) {
+        state.user = null;
+        clear_LoginUser();
+    }
 }
 
 const actions = {
@@ -36,10 +41,18 @@ const actions = {
             }
         })
     },
+    clearLoginUser({ commit }) {
+        commit('CLEAR_LOGINUSER')
+    }
 }
 
 const getters = {
-    getUser: state => state.user,
+    getUser: state => {
+        if (get_LoginUser() != null) {
+            state.user = get_LoginUser();
+        }
+        return state.user;
+    },
     menu: state => {
         if (state.menuRoutes.length > 0) {
             return state.menuRoutes;

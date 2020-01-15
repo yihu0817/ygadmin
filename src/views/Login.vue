@@ -114,7 +114,7 @@ export default {
         passwordLen = password.length;
       } else {
         this.loginRule.password[0].required = true;
-        showMassage("请输入密码！");
+        // showMassage("请输入密码！");
       }
       // console.log(`密码长度：${passwordLen}`);
       if (passwordLen >= 3 && passwordLen <= 5) {
@@ -133,7 +133,8 @@ export default {
         .then(res => {
           if (res.data.resultCode == 1) {
             // this.$store.dispatch("saveUser", res.data.resultInfo);
-            this.$store.dispatch("saveUser", user); //保存登录信息
+            this.$store.dispatch("saveUser", res.data.resultInfo); //保存登录信息
+            console.log(res.data.resultInfo);
             this.$router.replace({ path: "/main" });
             showMassage("登录成功！", "success");
           } else {
