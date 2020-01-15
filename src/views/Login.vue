@@ -112,7 +112,7 @@ export default {
      */
     LoginJudge(user) {
       let { username, password } = user;
-      RequestLogin()
+      RequestLogin(username, password)
         .then(res => {
           if (res.data.resultCode == 1) {
             // this.$store.dispatch("saveUser", res.data.resultInfo);
