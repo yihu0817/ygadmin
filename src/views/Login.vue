@@ -30,7 +30,6 @@
         </el-card>
       </el-main>
     </el-container>
->>>>>>> 1feec77d7174704a2b2cebe8e846ac07daa5378d
   </div>
 </template>
 
@@ -54,7 +53,6 @@ export default {
       const user = this.loginForm;
       this.$store.dispatch("saveUser", user);
       this.$router.replace({ path: "/main" });
-
     },
     /**
      * 取消登录
