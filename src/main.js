@@ -4,6 +4,7 @@ import router from '@/router'
 import store from '@/store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
+
 import Sha256 from "js-sha256";
 Vue.prototype.$Sha256 = Sha256;
 console.log(`>>>>>>>>>>>`)
@@ -22,6 +23,7 @@ router.beforeEach((to, from, next) => {
         next()
     }
 })
+
 
 new Vue({
     el: '#app',
