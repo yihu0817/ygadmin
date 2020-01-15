@@ -68,7 +68,7 @@ export default {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .mainTitle {
   text-align: left;
