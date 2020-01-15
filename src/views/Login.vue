@@ -42,12 +42,7 @@
           </el-form>
         </el-card>
       </el-main>
-<<<<<<< HEAD
-    </el-container>>>>>>>> 1feec77d7174704a2b2cebe8e846ac07daa5378d
-=======
     </el-container>
->>>>>>> 1feec77d7174704a2b2cebe8e846ac07daa5378d
->>>>>>> 63b4e52c8f9605d6376ba06ac0ca997e9dee9835
   </div>
 </template>
 
@@ -138,10 +133,7 @@ export default {
      */
     on_Login() {
       const user = this.loginForm;
-
-
       this.LoginJudge(user);
-
     },
     /**
      * 取消登录
@@ -149,7 +141,6 @@ export default {
     on_cancelLogin() {
       this.loginForm.username = null;
       this.loginForm.password = null;
-
     }
   }
 };
@@ -181,5 +172,4 @@ export default {
   margin-top: 30px;
   width: 120px;
 }
-
 </style>
