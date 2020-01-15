@@ -14,7 +14,11 @@
 </template>
 <script>
 import Menu from "@/views/Menu.vue";
-export default {};
+export default {
+  components:{
+    Menu
+  }
+};
 </script>
 <style>
 .el-header {

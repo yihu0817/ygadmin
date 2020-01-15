@@ -8,6 +8,7 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
+    {{menuList.length}}
       <template v-for="(content,index) in menuList">
         <el-submenu :index="index+''" :key="index" v-if="content.hidden">
           <template slot="title">
