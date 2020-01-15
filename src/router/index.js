@@ -12,7 +12,7 @@ const routes = [
     {
         name: "login",
         path: "/login",
-        component: () => import("@/views/login"),
+        component: () => import("@/views/Login"),
         hidden: false
 
     },
